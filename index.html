@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pen</title>
+  </head>
+  <body>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โลกของฉัน - อิรฟาน เซะเเง (Irfan Sehngae)</title>
+    
+    <!-- Google Fonts: Prompt & Mali -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,500;0,700;1,500&family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #0b1329;
+            --card-bg: rgba(18, 30, 61, 0.75);
+            --card-border: rgba(56, 189, 248, 0.25);
+            --primary: #38bdf8;
+            --primary-hover: #0284c7;
+            --sky-blue: #38bdf8;
+            --text-main: #f1f5f9;
+            --text-sub: #94a3b8;
+            --font-main: 'Prompt', sans-serif;
+            --font-doodle: 'Mali', cursive;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-main);
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(37, 99, 235, 0.12) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(11, 19, 41, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .logo i {
+            color: var(--primary);
+            font-size: 1.4rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #ffffff;
+            background: rgba(56, 189, 248, 0.15);
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 5rem 0 2rem 0;
+        }
+
+        .doodle-text {
+            font-family: var(--font-doodle);
+            color: var(--primary);
+            font-size: 1.1rem;
+            transform: rotate(-3deg);
+            display: inline-block;
+        }
+
+        #home {
+            padding-top: 7rem;
+        }
+
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(135deg, rgba(18, 30, 61, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%),
+                        url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 24px;
+            padding: 3.5rem 3rem;
+            border: 1px solid var(--card-border);
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            max-width: 550px;
+            z-index: 2;
+        }
+
+        .hero-greeting {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--text-main);
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.2;
+            margin-bottom: 0.8rem;
+            text-shadow: 0 4px 20px rgba(56, 189, 248, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-main);
+            margin-bottom: 0.4rem;
+        }
+
+        .hero-desc {
+            color: var(--text-sub);
+            font-size: 1rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--primary);
+            color: #0b1329;
+            padding: 0.75rem 1.6rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .hero-doodle-right {
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: right;
+            z-index: 1;
+            opacity: 0.85;
+            pointer-events: none;
+        }
+
+        .dream-text {
+            font-family: var(--font-doodle);
+            font-size: 2.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.3;
+            transform: rotate(5deg);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header i {
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        .main-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-inner {
+            display: grid;
+            grid-template-columns: 280px 1fr 280px;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .profile-img-container {
+            position: relative;
+            width: 100%;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 2px solid var(--card-border);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .about-info-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            color: var(--text-main);
+        }
+
+        .info-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .info-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+            color: var(--text-sub);
+        }
+
+        .info-list li i {
+            color: var(--primary);
+            width: 20px;
+            margin-top: 3px;
+            text-align: center;
+        }
+
+        .info-label {
+            color: var(--text-main);
+            font-weight: 500;
+            min-width: 130px;
+        }
+
+        .info-val {
+            color: var(--text-sub);
+            flex: 1;
+        }
+
+        .color-circle {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            background-color: var(--sky-blue);
+            border-radius: 50%;
+            vertical-align: middle;
+            margin-right: 4px;
+            border: 1px solid #ffffff;
+        }
+
+        .quote-box {
+            background: rgba(11, 19, 41, 0.6);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .quote-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .quote-text {
+            font-family: var(--font-doodle);
+            font-size: 1.15rem;
+            color: var(--text-main);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .hobby-single-wrapper {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .hobby-card-large {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            transition: all 0.3s ease;
+        }
+
+        .hobby-card-large:hover {
+            border-color: var(--primary);
+            box-shadow: 0 12px 30px rgba(56, 189, 248, 0.15);
+        }
+
+        .hobby-img-box {
+            position: relative;
+            min-height: 250px;
+        }
+
+        .hobby-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hobby-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hobby-badge {
+            width: 48px;
+            height: 48px;
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .hobby-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.6rem;
+        }
+
+        .hobby-desc {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .contact-single-wrapper {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .contact-content-center {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .contact-content-center h3 {
+            font-size: 1.2rem;
+            color: var(--text-main);
+        }
+
+        .contact-content-center p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        .email-card-box {
+            background: rgba(11, 19, 41, 0.8);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 1.2rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            width: 100%;
+            max-width: 400px;
+            justify-content: center;
+        }
+
+        .email-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--primary);
+            color: #0b1329;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .email-info span {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            text-align: left;
+        }
+
+        .email-info strong {
+            font-size: 1.05rem;
+            color: var(--text-main);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-sub);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 3rem;
+        }
+
+        footer i {
+            color: #ef4444;
+        }
+
+        @media (max-width: 992px) {
+            .about-inner {
+                grid-template-columns: 1fr;
+            }
+            .profile-img-container img {
+                height: 350px;
+            }
+            .hero-doodle-right {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 60px);
+                background: rgba(11, 19, 41, 0.95);
+                backdrop-filter: blur(15px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 1.5rem;
+                transition: all 0.3s ease;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .hero-banner {
+                padding: 2.5rem 1.5rem;
+            }
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            .hobby-card-large {
+                grid-template-columns: 1fr;
+            }
+            .hobby-img-box {
+                min-height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <i class="fa-solid fa-mountain-sun"></i> โลกของฉัน
+            </a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle Navigation Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-item active"><i class="fa-solid fa-house"></i> หน้าแรก</a></li>
+                <li><a href="#about" class="nav-item"><i class="fa-solid fa-user"></i> เกี่ยวกับฉัน</a></li>
+                <li><a href="#hobbies" class="nav-item"><i class="fa-solid fa-gamepad"></i> งานอดิเรก</a></li>
+                <li><a href="#contact" class="nav-item"><i class="fa-solid fa-envelope"></i> ติดต่อฉัน</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 1. Home Section -->
+    <section id="home">
+        <div class="container">
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <div class="hero-greeting">
+                        สวัสดีทุกคน! <i class="fa-regular fa-sun" style="color: #f59e0b;"></i>
+                    </div>
+                    <h1 class="hero-title">ยินดีต้อนรับสู่โลกของฉัน</h1>
+                    <div class="hero-subtitle">ฉันชื่อ <strong>อิรฟาน เซะเเง</strong></div>
+                    <p class="hero-desc">มาทำความรู้จักกับฉันให้มากขึ้นกันเถอะ</p>
+                    <a href="#about" class="btn-primary">
+                        <i class="fa-solid fa-user"></i> รู้จักฉันมากขึ้น <i class="fa-solid fa-chevron-right" style="font-size: 0.8rem;"></i>
+                    </a>
+                </div>
+
+                <div class="hero-doodle-right">
+                    <div class="dream-text">
+                        Dream<br>
+                        Learn<br>
+                        Grow
+                    </div>
+                    <div style="font-size: 2.5rem; color: rgba(255,255,255,0.4); margin-top: 0.5rem;">
+                        ⛰️✨
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. About Me Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <i class="fa-solid fa-user-large"></i> เกี่ยวกับฉัน
+            </div>
+
+            <div class="main-card">
+                <div class="about-inner">
+                    <!-- Profile Picture (เปลี่ยนลิงก์รูปภาพของคุณตรงนี้) -->
+                    <div class="profile-img-container">
+                        <img src="https://i.postimg.cc/nrXnVYqL/IMG-6539.jpg" alt="อิรฟาน เซะเเง Profile">
+                    </div>
+
+                    <!-- Personal Information -->
+                    <div>
+                        <div class="about-info-title">สวัสดี ฉันชื่ออิรฟาน</div>
+                        <ul class="info-list">
+                            <li>
+                                <i class="fa-solid fa-id-card"></i>
+                                <span class="info-label">ชื่อ–นามสกุล :</span>
+                                <span class="info-val">อิรฟาน เซะเเง (Irfan Sehngae)</span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-tag"></i>
+                                <span class="info-label">ชื่อเล่น :</span>
+                                <span class="info-val">ฟาน (Fan)</span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-palette"></i>
+                                <span class="info-label">สีที่ชอบ :</span>
+                                <span class="info-val"><span class="color-circle"></span> สีฟ้า (Sky blue)</span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-utensils"></i>
+                                <span class="info-label">อาหารที่ชอบ :</span>
+                                <span class="info-val">สเต็กเนื้อ, อาหารซีฟู้ด, KFC</span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-icons"></i>
+                                <span class="info-label">สิ่งที่สนใจ :</span>
+                                <span class="info-val">ถ่ายคลิปตัดต่อวิดีโอปักตะกร้าหารายได้เสริม</span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-paw"></i>
+                                <span class="info-label">สัตว์เลี้ยงที่ชอบ :</span>
+                                <span class="info-val">แมว 🐱</span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-bullseye"></i>
+                                <span class="info-label">เป้าหมายตอนนี้ :</span>
+                                <span class="info-val">จะสอบตำรวจไปเรื่อยๆ จนกว่าจะสอบติดตำรวจ (นสต.)👮‍♂️</span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-user-shield"></i>
+                                <span class="info-label">อาชีพในฝัน :</span>
+                                <span class="info-val">ตำรวจไซเบอร์ (Cyber Police) 👮‍♂️💻</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Quote Box -->
+                    <div class="quote-box">
+                        <i class="fa-solid fa-quote-left quote-icon"></i>
+                        <div class="quote-text">
+                            “เชื่อมั่นในตัวเอง<br>
+                            แล้วคุณจะผ่านพ้น<br>
+                            ทุกสิ่งต่างๆ ไปได้”
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. My Hobbies Section -->
+    <section id="hobbies">
+        <div class="container">
+            <div class="section-header">
+                <i class="fa-solid fa-gamepad"></i> งานอดิเรกของฉัน
+            </div>
+
+            <div class="hobby-single-wrapper">
+                <div class="hobby-card-large">
+                    <div class="hobby-img-box">
+                        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" alt="ถ่ายคลิปตัดต่อวิดีโอ">
+                    </div>
+                    <div class="hobby-body">
+                        <div class="hobby-badge">
+                            <i class="fa-solid fa-video"></i>
+                        </div>
+                        <h3 class="hobby-title">ถ่ายคลิปตัดต่อวิดีโอปักตะกร้าหารายได้เสริม</h3>
+                        <p class="hobby-desc">
+                            ชอบใช้เวลาว่างในการสร้างสรรค์คอนเทนต์ ถ่ายทำ และตัดต่อวิดีโอสั้นเพื่อแนะนำสินค้า พร้อมปักตะกร้าสร้างรายได้ออนไลน์ เพราะเป็นกิจกรรมที่ได้ฝึกทักษะการเล่าเรื่อง การตัดต่อ และใช้ความคิดสร้างสรรค์ให้เกิดประโยชน์จริง
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Contact Me Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <i class="fa-solid fa-paper-plane"></i> ติดต่อฉัน
+            </div>
+
+            <div class="main-card contact-single-wrapper">
+                <div class="contact-content-center">
+                    <span class="doodle-text">ยินดีต้อนรับเสมอ! ✏️</span>
+                    <h3>ถ้าอยากพูดคุยหรือทำความรู้จักกันเพิ่มเติม</h3>
+                    <p>สามารถติดต่อพูดคุยผ่านทาง Gmail ได้เลยครับ</p>
+                    
+                    <div class="email-card-box">
+                        <div class="email-icon">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="email-info">
+                            <span>Gmail สำหรับติดต่อ</span>
+                            <strong>faizsehngaeyala@gmail.com</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 เว็บไซต์แนะนำตัวของอิรฟาน | ขอบคุณที่แวะเข้ามาเยี่ยมชมครับ <i class="fa-solid fa-heart"></i></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Menu & Interaction -->
+    <script>
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const navLinks = document.getElementById('navLinks');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        hamburgerBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = hamburgerBtn.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = hamburgerBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+
+        const sections = document.querySelectorAll('section');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
